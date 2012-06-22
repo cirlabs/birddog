@@ -1,0 +1,4 @@
+*.pyc
+data
+birddog/gzip
+birddog/static

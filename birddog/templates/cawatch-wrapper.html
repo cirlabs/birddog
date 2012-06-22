@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block title %}California Watch | Bold new journalism{% endblock %}
+
+{% block wrapper_meta %}
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<meta name="author" content="{% block content_author %}{% endblock %}">
+{% endblock %}
+
+{% block wrapper_css %}
+	<!-- Le styles -->
+	<link href="http://media.apps.cironline.org/shared/bootstrap/css/bootstrap.css" rel="stylesheet">
+	<link href="http://media.apps.cironline.org/shared/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+	<link href="http://media.apps.cironline.org/shared/cawatch-responsive/cawatch-bootstrap-reset.css" rel="stylesheet">
+	
+	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+	<!-- Le fav and touch icons -->
+	<link rel="shortcut icon" href="http://media.apps.cironline.org/shared/cawatch-responsive/img/favicon.ico">
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://media.apps.cironline.org/shared/cawatch-responsive/img/apple-touch-icon-114-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://media.apps.cironline.org/shared/cawatch-responsive/img/apple-touch-icon-72-precomposed.png">
+	<link rel="apple-touch-icon-precomposed" href="http://media.apps.cironline.org/shared/cawatch-responsive/img/apple-touch-icon-57-precomposed.png">
+
+{% endblock %}
+
+{% block content %}
+	<div class="row-fluid">
+		<div class="social-media">
+			<ul class="menu">
+				<li><a href="/e-mail-alerts"><img src="http://media.apps.cironline.org/shared/cawatch-responsive/img/email_16.gif" width="16" height="16" alt="E-mail Alerts"></a></li>
+				<li><a href="http://www.facebook.com/californiawatch" target="_blank"><img src="http://media.apps.cironline.org/shared/cawatch-responsive/img/facebook_16.png" width="16" height="16" alt="Facebook"></a></li>
+				<li><a href="http://twitter.com/californiawatch" target="_blank"><img src="http://media.apps.cironline.org/shared/cawatch-responsive/img/twitter_16.png" width="16" height="16" alt="Twitter"></a></li>
+				<li><a href="http://californiawatch.tumblr.com" target="_blank"><img src="http://media.apps.cironline.org/shared/cawatch-responsive/img/tumblr_16.png" width="16" height="16" alt="Tumblr"></a></li>
+				<li class="leaf last"><a href="/rss-feeds"><img src="http://media.apps.cironline.org/shared/cawatch-responsive/img/rss_16.png" width="16" height="16" alt="RSS"></a></li>
+			</ul>
+		</div>
+		<img class="cawatch-logo" src="http://media.apps.cironline.org/shared/cawatch-responsive/img/cawatch-logo.gif">
+		<p class="tagline">Founded by the Center for Investigative Reporting</p>
+	</div>
+	
+	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<div class="nav-collapse">
+					<ul class="nav">
+						<li class="active"><a href="http://californiawatch.org/topic/health-and-welfare">Health &amp; Welfare</a></li>
+						<li><a href="http://californiawatch.org/topic/K%E2%80%9312">K-12</a></li>
+						<li><a href="http://californiawatch.org/topic/higher-ed">Higher Ed</a></li>
+						<li><a href="http://californiawatch.org/topic/money-and-politics">Money &amp; Politics</a></li>
+						<li><a href="http://californiawatch.org/topic/environment">Environment</a></li>
+						<li><a href="http://californiawatch.org/topic/public-safety">Public Safety</a></li>
+						<li class="daily-report"><a href="http://californiawatch.org/dailyreport">Daily Report</a></li>
+						<li class="spotlight"><a href="http://californiawatch.org/spotlight">Spotlight</a></li>
+						<li class="data-center"><a href="http://californiawatch.org/datacenter">Data Center</a></li>
+						<li class="dropdown more">
+							<a href="#"
+							class="dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b> </a>
+							<ul class="dropdown-menu">
+								<li><a href="http://californiawatch.org/be-content-creator-support-california-watch">Donate</a></li>
+								<li><a href="http://californiawatch.org/e-mail-alerts">Get Alerts</a></li>
+								<li><a href="http://californiawatch.org/react-and-act">React &amp; Act</a></li>
+								<li><a href="http://californiawatch.org/newsroom">Inside the Newsroom</a></li>
+								<li><a href="http://californiawatch.org/contact-us">Contact</a></li>
+								<li><a href="http://californiawatch.org/advertise-us">Advertise</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
+
+	<article class="row-fluid">
+	
+		<header>
+			<ul class="section-label">
+				<!--insert category-->
+				<li><a href="http://californiawatch.org/topic/public-safety">Public Safety</a></li>
+				<!--insert spotlight/daily report-->
+				<li><a href="http://californiawatch.org/spotlight">Spotlight</a></li>
+				<!--insert package name-->
+				<li><a href="http://californiawatch.org/broken-shield">Broken Shield</a></li>
+			</ul>
+			<h1>{% block main-headline %}{% endblock %}</h1>
+			<p class="intro-text">{% block intro-text %}{% endblock %}</p>
+		</header>
+		
+		<section id="main-body">
+			{% block inner-content %}{% endblock %}
+		
+			<footer>
+				<p class="sourceline">{% block sourceline %}{% endblock %}</p>
+			</footer>
+		</section>
+
+	</article>
+	
+	<div class="row-fluid bottom-nav">
+		<div class="span2">
+			<h4>Topics</h4>
+			<ul>
+				<li><a href="http://californiawatch.org">Home</a></li>
+				<li><a href="http://californiawatch.org/topic/health-and-welfare">Health & Welfare</a></li>
+				<li><a href="http://californiawatch.org/topic/K%E2%80%9312">K–12</a></li>
+				<li><a href="http://californiawatch.org/topic/higher-ed">Higher Ed</a></li>
+				<li><a href="http://californiawatch.org/topic/money-and-politics">Money & Politics</a></li>
+				<li><a href="http://californiawatch.org/topic/environment">Environment</a></li>
+				<li><a href="http://californiawatch.org/topic/public-safety">Public Safety</a></li>
+			</ul>
+		</div>
+		
+		<div class="span2">
+			<h4>Our Content</h4>
+			<ul>
+				<li><a href="http://californiawatch.org/spotlight">Spotlight</a></li>
+				<li><a href="http://californiawatch.org/dailyreport">Daily Report</a></li>
+				<li><a href="http://californiawatch.org/react-and-act">React & Act</a></li>
+				<li><a href="http://californiawatch.org/public-insight-network">Help Us Report</a></li>
+				<li><a href="http://californiawatch.org/datacenter">Data Center</a></li>
+				<li><a href="http://californiawatch.org/newsroom">Inside the Newsroom</a></li>
+				<li><a href="http://californiawatch.org/archive">Archive</a></li>
+				<li><a href="mailto:editors@californiawatch.org?subject=California%20Watch%20reporting%20error">Report an Error</a></li>
+			</ul>
+		</div>
+		
+		<div class="span2">
+			<h4>Who We Are</h4>
+			<ul>
+				<li><a href="http://californiawatch.org/about">About</a></li>
+				<li><a href="http://californiawatch.org/contact-us">Our Team</a></li>
+				<li><a href="http://californiawatch.org/foundations-give-california-watch-its-start">Our Funders</a></li>
+				<li><a href="http://californiawatch.org/press-room">Press Room</a></li>
+				<li><a href="http://californiawatch.org/privacy-policy">Privacy Policy</a></li>
+			</ul>
+		</div>
+		
+		<div class="span3">
+			<h4>Partner With Us</h4>
+			<ul>
+				<li><a href="http://californiawatch.org/california-watch-media-network">California Watch Media Network</a></li>
+				<li><a href="http://californiawatch.org/using-california-watch-content-online">Use Our Content / Logo</a></li>
+				<li><a href="http://californiawatch.org/employment">Employment / Internships</a></li>
+				<li><a href="http://californiawatch.org/be-content-creator-support-california-watch">Donate</a></li>
+				<li><a href="http://californiawatch.org/advertise-us">Advertise</a></li>
+			</ul>
+		</div>
+		
+		<div class="span4">
+			&nbsp;
+		</div>
+	</div>
+	
+	<div class="row-fluid">
+		<div class="span12 copyright">© 2012 California Watch</div>
+	</div>
+
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/jquery.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-transition.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-alert.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-modal.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-dropdown.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-scrollspy.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-tab.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-tooltip.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-popover.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-button.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-collapse.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-carousel.js"></script>
+	<script src="http://media.apps.cironline.org/shared/bootstrap/js/bootstrap-typeahead.js"></script>
+{% endblock %}
