@@ -20,7 +20,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'birddog',
         'PORT': '5432',
-        'HOST': 'localhost',
+        'HOST': 'ec2-184-169-211-189.us-west-1.compute.amazonaws.com',
+        'user': 'postgres',
+        'password': 'shamoo5'
     }
 }
 
