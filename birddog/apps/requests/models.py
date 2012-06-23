@@ -20,7 +20,10 @@ class Request(models.Model):
 
     def __unicode__(self):
         return self.title
-
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('request_detail', (), {'slug': self.slug})
 
 class Event(models.Model):
     request = models.ForeignKey(Request)

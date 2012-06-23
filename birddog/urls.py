@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     (r'^admin/', admin.site.urls),
 
     # Project URLs go here
-
+    (r'^requests/', include('apps.requests.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
