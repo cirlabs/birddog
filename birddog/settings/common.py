@@ -135,8 +135,9 @@ INSTALLED_APPS = (
     'apps.requests',
     'apps.users',
     'apps.doccloud',
+    'registration',
 )
-
+ACCOUNT_ACTIVATION_DAYS = 7
 # Caching
 CACHE_MIDDLEWARE_KEY_PREFIX = 'birddog'
 CACHE_MIDDLEWARE_SECONDS = 3 # 3 seconds

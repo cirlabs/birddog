@@ -1,6 +1,7 @@
 from django import forms
 from apps.users.models import Organization
+from registration.forms import RegistrationForm
 
 
-class OrganizationForm(forms.Form):
-    name = forms.CharField(max_length=255)
+class UserRegistrationForm(RegistrationForm):
+    organization = forms.CharField(max_length=255)
