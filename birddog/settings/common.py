@@ -21,8 +21,7 @@ DATABASES = {
         'NAME': 'birddog',
         'PORT': '5432',
         'HOST': 'ec2-184-169-211-189.us-west-1.compute.amazonaws.com',
-        'user': 'postgres',
-        'password': 'shamoo5'
+        'USER': 'postgres',
     }
 }
 

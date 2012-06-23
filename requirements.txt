@@ -8,15 +8,12 @@ PasteScript==1.7.5
 django-debug-toolbar==0.9.4
 django-extensions==0.9
 django-project-templates==0.11
-django-pylibmc-sasl==0.2.4
 django-taggit==0.9.3
 geopy==0.94.2
-gevent==0.13.6
 greenlet==0.3.4
 gunicorn==0.13.4
 psycopg2==2.4.4
 pycrypto==2.5
-pylibmc==1.2.2
 python-dateutil==1.5
 python-documentcloud==0.154
 ssh==1.7.13
