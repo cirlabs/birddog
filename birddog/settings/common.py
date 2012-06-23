@@ -120,23 +120,24 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.gis',
+#    'django.contrib.gis',
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    
+
     # External apps
     'gunicorn',
     'taggit',
-    
+
     # Project apps
     'apps.core',
     'apps.requests',
     'apps.users',
     'apps.doccloud',
+    'registration',
 )
-
+ACCOUNT_ACTIVATION_DAYS = 7
 # Caching
 CACHE_MIDDLEWARE_KEY_PREFIX = 'birddog'
 CACHE_MIDDLEWARE_SECONDS = 3 # 3 seconds
