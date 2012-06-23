@@ -8,6 +8,7 @@ from apps.users.forms import UserRegistrationForm
 from registration.views import register
 import registration.backends.default.urls as regUrls
 import apps.users.regbackend
+from django.views.generic.simple import direct_to_template
 
 admin.autodiscover()
 
@@ -26,8 +27,12 @@ urlpatterns = patterns('',
         'form_class': UserRegistrationForm, 'success_url': '/'}, name='registration_register'),
 
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    
     # Project URLs go here
 
+    (r'^requests/', include('apps.requests.urls')),
+
+    url(r'^$', direct_to_template, {'template': 'index.html'}),
 )
 
 urlpatterns += staticfiles_urlpatterns()
