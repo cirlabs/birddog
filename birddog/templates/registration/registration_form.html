@@ -1,0 +1,6 @@
+<form action="/accounts/register/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    Organization: {{org_form.name}}<br/>
+    <input type="submit" value="submit">
+</form>

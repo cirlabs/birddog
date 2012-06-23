@@ -13,7 +13,7 @@ urlpatterns = patterns('',
     # Admin
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', admin.site.urls),
-
+    url(r'^accounts/register/$', 'apps.users.views.register', name='user_register_view'),
     # Project URLs go here
 
 )
