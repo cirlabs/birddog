@@ -129,13 +129,13 @@ INSTALLED_APPS = (
     # External apps
     'gunicorn',
     'taggit',
+    'registration',
 
     # Project apps
     'apps.core',
     'apps.requests',
     'apps.users',
     'apps.doccloud',
-    'registration',
 )
 ACCOUNT_ACTIVATION_DAYS = 7
 # Caching
@@ -173,6 +173,8 @@ LOGGING = {
 
 # Custom settings
 DOCUMENTS_PATH = os.path.join(MEDIA_ROOT, 'documents')
+DOCUMENTCLOUD_USERNAME='baycitizendata@baycitizen.org'
+DOCUMENTCLOUD_PASS='d0naten0w'
 
 # Allow for local (per-user) override
 try:
