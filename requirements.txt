@@ -18,3 +18,4 @@ python-dateutil==1.5
 python-documentcloud==0.154
 ssh==1.7.13
 wsgiref==0.1.2
+django-registration
