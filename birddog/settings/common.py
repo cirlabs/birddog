@@ -120,16 +120,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.gis',
+#    'django.contrib.gis',
     'django.contrib.humanize',
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.admindocs',
-    
+
     # External apps
     'gunicorn',
     'taggit',
-    
+
     # Project apps
     'apps.core',
     'apps.requests',
