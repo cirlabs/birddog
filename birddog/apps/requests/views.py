@@ -17,6 +17,14 @@ class RequestListView(ListView):
     template_name = 'requests/request_list.html'
     queryset = Request.objects.all()
 
+class RequestListViewPublic(ListView):
+    """
+    Main view showing the list of top donors. Used as an index page.
+    """
+    context_object_name = 'request_list'
+    template_name = 'requests/request_list_public.html'
+    queryset = Request.objects.all()
+    
 
 class RequestDetailView(DetailView):
     """
@@ -35,7 +43,7 @@ class RequestDetailViewPublic(DetailView):
     Returns a specific request using the slug as the unique identifier
     """
     context_object_name = 'request'
-    template_name = 'requests/request_detail.html'
+    template_name = 'requests/request_detail_public.html'
     queryset = Request.objects.all()
 
     def dispatch(self, *args, **kwargs):
