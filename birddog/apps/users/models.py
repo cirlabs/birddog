@@ -8,7 +8,7 @@ class UserProfile(models.Model):
     private_by_default = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return '%s %s' % (self.user.first_name, self.user.last_name)
+        return self.user.username
 
 
 class Organization(models.Model):
