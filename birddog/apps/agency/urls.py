@@ -8,10 +8,9 @@ from django.views.generic.simple import direct_to_template
 
 
 urlpatterns = patterns('',
-    
     #url(r'detail/(?P<slug>.+)/$', AgencyDetailView.as_view(), name="agency_detail"),
     #url(r'list/$', AgencyListView.as_view(), name="agency_list"),
 
-    url(r'detail/$', direct_to_template, {'template': 'agencies/agency.html'}, name="agency_detail"),
-    url(r'list/$', direct_to_template, {'template': 'agencies/agency_list.html'}, name="agency_list"),
+    url(r'detail/$', direct_to_template, {'template': 'agency/agency.html'}, name="agency_detail"),
+    url(r'list/$', direct_to_template, {'template': 'agency/agency_list.html'}, name="agency_list"),
 )
