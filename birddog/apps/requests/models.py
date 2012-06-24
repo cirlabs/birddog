@@ -17,21 +17,38 @@ class Request(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
     # Managers
     tags = TaggableManager()
-
+    
+    # date_fulfiled?
+    
     def __unicode__(self):
         return self.title
+    
+    def original_deadline(self):
+        e = self.event_set.filter(type=2).order_by('date')[0]
+        return e.date
+    
+    def latest_deadline(self):
+        e = self.event_set.filter(type=2).order_by('date')[0]
+        return e.date
     
     @models.permalink
     def get_absolute_url(self):
         return ('request_detail', (), {'slug': self.slug})
 
 class Event(models.Model):
+    EVENT_CHOICES = (
+        (0, 'Note'),
+        (1, 'Reminder'),
+        (2, 'Deadline'),
+        (3, 'Response')
+    )
     request = models.ForeignKey(Request)
+    type = models.IntegerField(choices=EVENT_CHOICES)
     name = models.CharField(max_length=255)
     date = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True)
     # Supporting docs
-
+    
     def __unicode__(self):
         return '%s -> %s' % (self.request.title, self.name)
 
