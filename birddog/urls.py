@@ -17,8 +17,11 @@ urlpatterns = patterns('',
     (r'^/$', 'apps.users.views.register_complete'),#change me
     url(r'^docs/$', 'apps.doccloud.views.index', name='docs_index'),
     url(r'^docs/upload/$', 'apps.doccloud.views.upload', name='docs_upload'),
-    (r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'admin/login.html'}),
+    # (r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'admin/login.html'}),
 
+    # Logging in
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^accounts/logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     # Admin
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', admin.site.urls),
@@ -27,12 +30,13 @@ urlpatterns = patterns('',
         'form_class': UserRegistrationForm, 'success_url': '/'}, name='registration_register'),
 
     url(r'^accounts/', include('registration.backends.simple.urls')),
-    
+
     # Project URLs go here
 
     (r'^requests/', include('apps.requests.urls')),
 
-    url(r'^$', direct_to_template, {'template': 'index.html'}),
+    url(r'^$', direct_to_template, {'template': 'index.html'}, name='front_page'),
 )
 
 urlpatterns += staticfiles_urlpatterns()
+

@@ -39,15 +39,21 @@
           </a>
           <a class="brand" href="#"><img src="{{ STATIC_URL }}img/logo-navHeader.png" /></a>
           <div class="btn-group pull-right">
+          {% if user.is_authenticated %}
             <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> Username
+              <i class="icon-user"></i> {{user.username}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
               <li><a href="#">Profile</a></li>
               <li class="divider"></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="{% url logout %}">Sign Out</a></li>
             </ul>
+           {% else %}
+            <a class="btn" href="{% url login %}">
+                Sign In
+            </a>
+            {% endif %}
           </div>
           <div class="nav-collapse">
             <ul class="nav">
@@ -68,8 +74,8 @@
         		<!--<h1>¡FOIAAAAAAAAAAAA!</h1>-->
         		Hello, world that now has Bird Dog. You're welcome.
         	</div>
-        	
-        	
+
+
         </div><!--/span-->
       </div><!--/row-->
 
@@ -88,3 +94,4 @@
 
   </body>
 </html>
+
