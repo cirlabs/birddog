@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 {% load url from future %}
 
+{% block title %}Bird Dog: {{ request.title }}{% endblock %}
+
+{% block wrapper_meta%}
+<meta property="og:title" content="{{ request.title }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://birddog.it{% url 'request_detail_public' slug=request.slug %}" />
+<meta property="og:image" content="http://birddog.it{{ STATIC_URL }}img/logo-navHeader.png" />
+<meta property="og:site_name" content="birddog.it" />
+<meta property="fb:admins" content="546347913" />
+{% endblock %}
+
 {% block content %}
 
 <script>
@@ -43,7 +54,18 @@
         <a href="{% url 'docs_detail' slug=document.slug %}">{{document.title}}</a><br/>
     {% endfor %}
 	
-	
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=241479755968849";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="fb-like" data-send="false" data-width="450" data-show-faces="false"></div>
+
 </section>
 
 {% endblock %}

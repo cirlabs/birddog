@@ -63,7 +63,7 @@
           <div class="btn-group pull-right">
             {% if user.is_authenticated %}
             <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="icon-user"></i> {{user.username}}
+              <i class="icon-user icon-white"></i> {{user.username}}
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
@@ -72,7 +72,7 @@
               <li><a href="{% url 'logout' %}">Sign Out</a></li>
             </ul>
             {% else %}
-            <a class="btn" href="{% url 'login' %}">
+            <a class="btn btn-inverse" href="{% url 'login' %}">
               Sign In
             </a>
             {% endif %}
@@ -85,11 +85,11 @@
           			<b class="caret"></b>
     			</a>
     			<ul class="dropdown-menu">
-    				<li><a href="{% url 'request_list_public' %}">Public requests</a></li>
+    				<li><a href="{% url 'request_list_public' %}">Public Requests</a></li>
     				<li class="divider"></li>
-    				<li><a href="{% url 'request_list' %}">My requests</a></li>
+    				<li><a href="{% url 'request_list' %}">My Requests</a></li>
     				<li class="divider"></li>
-    				<li><a href="{% url 'request_new' %}">Create new request</a></li>
+    				<li><a href="{% url 'request_new' %}">Create New Request</a></li>
     			</ul>
   			  </li>
               

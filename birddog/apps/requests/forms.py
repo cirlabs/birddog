@@ -1,6 +1,5 @@
 from django import forms
 
-from apps.agency.models import Agency
 from .models import Request
 
 
