@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import render_to_response, get_object_or_404
 
 
-from .models import Agency
+from apps.agency.models import Agency
 
 
 class AgencyListView(ListView):
@@ -21,7 +21,7 @@ class AgencyDetailView(DetailView):
     Returns a specific agency using the slug as the unique identifier
     """
     context_object_name = 'agency'
-    template_name = 'agency/agency_detail.html'
+    template_name = 'agency/agency.html'
     queryset = Agency.objects.all()
 
     def dispatch(self, *args, **kwargs):
