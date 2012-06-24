@@ -5,7 +5,7 @@ import django
 # Base paths
 DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'requests/list/'
 LOGOUT_REDIRECT_URL ='/'
 
 DEBUG = True
