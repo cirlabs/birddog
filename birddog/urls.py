@@ -30,6 +30,7 @@ urlpatterns = patterns('',
         'form_class': UserRegistrationForm, 'success_url': '/'}, name='registration_register'),
 
     url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^tag_suggest/', include('taggit_autosuggest.urls')),
 
     # Project URLs go here
 

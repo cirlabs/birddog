@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from django_extensions.db.fields import AutoSlugField
-from taggit.managers import TaggableManager
+from taggit_autosuggest.managers import TaggableManager
 
 from apps.doccloud.models import Document
 from apps.agency.models import Agency

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 {% block title %}Bird Dog: New request{% endblock %}
 
@@ -25,7 +26,15 @@
 				<br/>
 				<input type="submit" value="Send out the dogs! RUFF!" />
 			</fieldset>
-			
+
 		</form>
 	</section>
+{% endblock %}
+
+{% block page_scripts %}
+	<script>
+		$(function(){
+			$("input#id_tags").autoSuggest("{% url 'taggit_autosuggest-list' %}", {minChars: 1, matchCase: true});
+		});
+	</script>
 {% endblock %}

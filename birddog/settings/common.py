@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     # External apps
     'gunicorn',
     'taggit',
+    'taggit_autosuggest',
     'registration',
 
     # Project apps
