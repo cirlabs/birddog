@@ -34,7 +34,7 @@ urlpatterns = patterns('',
     # Project URLs go here
 
     (r'^requests/', include('apps.requests.urls')),
-    (r'^agencies/', include('apps.requests.urls')),
+    (r'^agencies/', include('apps.agencies.urls')),
 
     url(r'^$', direct_to_template, {'template': 'index.html'}, name='front_page'),
 )

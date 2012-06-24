@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Bird Dog: New request{% endblock %}
+	
+{% block wrapper_meta %}{% endblock %}
+
+{% block wrapper_css %}{% endblock %}
+
+{% block content %}
+
+<style>
+	#my-requests th,
+	#my-requests td {
+		padding : 7px ;
+		border-bottom : 1px solid #CCC ;
+	}
+	
+	#bulk-actions h3 {
+		display : inline-block ;
+	}
+</style>
+
+<section id="my-requests">
+	<h1>All of the agencies are belong to us</h1>
+	
+	<div id="agency-search">
+		<input type="text"/>
+		<a class="btn btn-primary btn-large">Search</a>
+	</div>
+		
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<th>Level</th>
+			<th>Name</th>
+			<th>Contacts</th>
+		</tr>
+		{% for object in object_list %}<tr>
+			<td>Federal</td>
+			<td><a href="{% url request_detail slug=object.slug %}">{{ object.name }}</a></td>
+			<td>3ish</td>
+		</tr>{% endfor %}
+	</table>
+</section>
+
+{% endblock %}

@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'apps.requests',
     'apps.users',
     'apps.doccloud',
+    'apps.agencies',
 )
 ACCOUNT_ACTIVATION_DAYS = 7
 # Caching
