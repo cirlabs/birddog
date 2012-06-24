@@ -7,21 +7,25 @@
 {% block wrapper_css %}{% endblock %}
 
 {% block content %}
-	<h3>Start a new request</h3>
-	<form action="" method="POST">
-		{% csrf_token %}
-		<fieldset>
-			<legend>Required</legend>
-			{{ reqform }}
-			<br />
-			<input type="submit" value="Send out the dogs!" />
-		</fieldset>
-		<br >
-		<fieldset>
-			<legend>Additional information</legend>
-			{{ optform }}
-		</fieldset>
-		<br />
-		<input type="submit" value="Send out the dogs! RUFF!" />
-	</form>
+	<section id="new-request">
+		<h1>Start a new request</h1>
+		<form action="" method="POST">
+			{% csrf_token %}
+			<fieldset class="well">
+				<legend>Required</legend>
+				<p>Just the bare minimum to keep track of your request. You can fill more, or come back later to flesh out the details.</p>
+				{{ reqform }}
+				<br />
+				<input type="submit" value="Send in the dogs!" />
+			</fieldset>
+			<br >
+			<fieldset class="well">
+				<legend>Additional information</legend>
+				{{ optform }}
+				<br/>
+				<input type="submit" value="Send out the dogs! RUFF!" />
+			</fieldset>
+			
+		</form>
+	</section>
 {% endblock %}
