@@ -161,7 +161,9 @@ body {
   font-size: 13px;
   line-height: 18px;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #f2ede0;
+  background-image: url('../img/bg-body.png');
+  
 }
 
 a {
@@ -586,8 +588,8 @@ dd {
 hr {
   margin: 18px 0;
   border: 0;
-  border-top: 1px solid #eeeeee;
-  border-bottom: 1px solid #ffffff;
+  border-top: 1px solid #d6d1c6;
+  border-bottom: 1px solid #f9f9f7;
 }
 
 strong {
@@ -3576,24 +3578,26 @@ input[type="submit"].btn.btn-mini {
 }
 
 .navbar-inner {
-  min-height: 40px;
+  min-height: 65px;
   padding-right: 20px;
   padding-left: 20px;
-  background-color: #2c2c2c;
-  background-image: -moz-linear-gradient(top, #333333, #222222);
-  background-image: -ms-linear-gradient(top, #333333, #222222);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#333333), to(#222222));
-  background-image: -webkit-linear-gradient(top, #333333, #222222);
-  background-image: -o-linear-gradient(top, #333333, #222222);
-  background-image: linear-gradient(top, #333333, #222222);
+  border-bottom: 1px solid #33312c;
+  background: #88867a; /* Old browsers */
+  background: -moz-linear-gradient(top,  #88867a 0%, #737166 26%, #4c4b44 99%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#88867a), color-stop(26%,#737166), color-stop(99%,#4c4b44)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #88867a 0%,#737166 26%,#4c4b44 99%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #88867a 0%,#737166 26%,#4c4b44 99%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #88867a 0%,#737166 26%,#4c4b44 99%); /* IE10+ */
+  background: linear-gradient(top,  #88867a 0%,#737166 26%,#4c4b44 99%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#88867a', endColorstr='#4c4b44',GradientType=0 ); /* IE6-9 */
   background-repeat: repeat-x;
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0);
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .navbar .container {
@@ -3638,7 +3642,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .btn,
 .navbar .btn-group {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 .navbar .btn-group .btn {
@@ -3774,10 +3778,13 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav {
   position: relative;
-  left: 0;
+  left: 10px;
   display: block;
   float: left;
-  margin: 0 10px 0 0;
+  margin: 12px 10px 0 0;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5em;
 }
 
 .navbar .nav.pull-right {
@@ -3791,7 +3798,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .nav > li > a {
   float: none;
-  padding: 9px 10px 11px;
+  margin: 9px 10px 11px;
   line-height: 19px;
   color: #999999;
   text-decoration: none;
@@ -3807,7 +3814,7 @@ input[type="submit"].btn.btn-mini {
 
 .navbar .btn-group {
   padding: 5px 5px 6px;
-  margin: 0;
+  margin: 13px 0 0 0;
 }
 
 .navbar .nav > li > a:hover {
@@ -3820,7 +3827,8 @@ input[type="submit"].btn.btn-mini {
 .navbar .nav .active > a:hover {
   color: #ffffff;
   text-decoration: none;
-  background-color: #222222;
+  padding-bottom: 3px;
+  border-bottom: 2px solid #737166;
 }
 
 .navbar .divider-vertical {
@@ -4941,10 +4949,13 @@ a.badge:hover {
 .hero-unit {
   padding: 60px;
   margin-bottom: 30px;
-  background-color: #eeeeee;
+  background-color: #fffefc;
+  border: 1px solid #bab5a9;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
           border-radius: 6px;
+  -webkit-box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, .3);        
+  box-shadow:  0px 0px 3px 0px rgba(0, 0, 0, .3);
 }
 
 .hero-unit h1 {
