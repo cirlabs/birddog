@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 {% block title %}Bird Dog: New request{% endblock %}
 	
@@ -34,9 +35,9 @@
 			<th>Name</th>
 			<th>Contacts</th>
 		</tr>
-		{% for object in object_list %}<tr>
+		{% for agency in agency_list %}<tr>
 			<td>Federal</td>
-			<td><a href="{% url request_detail slug=object.slug %}">{{ object.name }}</a></td>
+			<td><a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency.name }}</a></td>
 			<td>3ish</td>
 		</tr>{% endfor %}
 	</table>

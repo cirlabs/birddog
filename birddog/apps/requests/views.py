@@ -33,8 +33,8 @@ class RequestDetailView(DetailView):
 
 @login_required
 def new_request(request):
-    reqform = NewRequestForm(request.POST or None)
-    optform = NewOptionalRequestForm(request.POST or None)
+    reqform = NewRequestForm(request.POST or None, label_suffix='')
+    optform = NewOptionalRequestForm(request.POST or None, label_suffix='')
 
     if request.method == 'POST' and reqform.is_valid() and optform.is_valid():
         new_request = reqform.save(commit=False)

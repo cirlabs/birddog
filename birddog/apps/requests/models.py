@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
-from taggit.managers import TaggableManager
-from apps.doccloud.models import Document
-from apps.agencies.models import Agency
 
 from django_extensions.db.fields import AutoSlugField
+from taggit.managers import TaggableManager
+
+from apps.doccloud.models import Document
+from apps.agency.models import Agency
 
 
 class Request(models.Model):
@@ -14,7 +15,7 @@ class Request(models.Model):
     agency = models.ForeignKey(Agency, blank=True, null=True)
     document = models.ForeignKey(Document, blank=True, null=True)
     text = models.TextField(u'Request text', blank=True)
-    private = models.BooleanField(default=False)
+    private = models.BooleanField('Mark this request as private', default=False)
     supporters = models.ManyToManyField(User, blank=True, null=True, related_name='supporter')
     slug = AutoSlugField(populate_from=('title', ), overwrite=True)
     date_added = models.DateTimeField(auto_now_add=True)

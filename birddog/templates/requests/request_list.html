@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 {% block title %}Bird Dog: New request{% endblock %}
 	
@@ -47,8 +48,8 @@
 		{% for object in object_list %}<tr>
 			<td><input type="checkbox"/></td>
 			<td>{{ object.date_added.date }}</td>
-			<td><a href="{% url request_detail slug=object.slug %}">{{ object.title }}</a></td>
-			<td><a href="{% url agency_detail %}">{{ object.agency }}</a></td>
+			<td><a href="{% url 'request_detail' slug=object.slug %}">{{ object.title }}</a></td>
+			<td><a href="{% url 'agency_detail' slug=object.agency.slug %}">{{ object.agency }}</a></td>
 			<td></td>
 			<td>{{ object.get_status_display }}</td>
 			<td>Private</td>
