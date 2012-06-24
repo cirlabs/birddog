@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 {% block title %}Bird Dog: {{agency.name}}{% endblock %}
 	
@@ -7,11 +8,6 @@
 {% block wrapper_css %}{% endblock %}
 
 {% block content %}
-
-<style>
-	
-</style>
-
 
 <div class="body-content">
 
@@ -36,10 +32,10 @@
   		</tr>
   		{% for object in agency.related_agencies.all %}<tr>
   			<td>{{ object.date_added.date }}</td>
-  			<td>{{ object.title }}</td>
+  			<td><a href="{% url 'request_detail' slug=object.slug %}">{{ object.title }}</a></td>
   			<td>
   				{% for agency in object.agencies.all %}
-  					{{ agency.name }}<br/>
+  					<a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency.name }}</a><br/>
   				{% endfor %}
   			</td>
   			<td></td>
