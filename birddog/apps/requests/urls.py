@@ -13,7 +13,4 @@ urlpatterns = patterns('',
     url(r'detail/(?P<slug>.+)/edit/$', login_required(RequestDetailView.as_view()), name="request_edit"),
     url(r'detail/(?P<slug>.+)/$', RequestDetailView.as_view(), name="request_detail"),
     
-    #agency
-    #url(r'detail/(?P<slug>.+)/$', AgencyDetailView.as_view(), name="agency_detail"),
-    url(r'detail/$', direct_to_template, {'template': 'requests/agency.html'}, name="agency_detail"),
 )
