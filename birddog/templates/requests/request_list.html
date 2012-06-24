@@ -51,7 +51,7 @@
 			<td><a href="{% url 'request_detail' slug=object.slug %}">{{ object.title }}</a></td>
 			<td>
 				{% for agency in object.agencies.all %}
-					<a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency }}</a>
+					<a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency.name }}</a><br/>
 				{% endfor %}
 			</td>
 			<td></td>

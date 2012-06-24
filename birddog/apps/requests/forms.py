@@ -17,11 +17,6 @@ class NewRequestForm(forms.ModelForm):
                 'private': forms.widgets.CheckboxInput
             }
 
-    agencies = forms.ModelMultipleChoiceField(
-                queryset=Agency.objects.all(),
-                widget=forms.widgets.SelectMultiple,
-            )
-
 
 class NewOptionalRequestForm(forms.ModelForm):
     class Meta:
