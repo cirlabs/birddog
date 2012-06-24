@@ -1,9 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Bird Dog: New request{% endblock %}
+  
+{% block wrapper_meta %}{% endblock %}
+
+{% block wrapper_css %}{% endblock %}
+
+{% block content %}
 <form action="/accounts/login/" method="POST">
     {% csrf_token %}
-    {{form.as_p}}
+    {{form}}
+    <br>
     <input type="submit" value="submit">
 </form>
 
 <a class="btn" href="{% url registration_register%}">
     Sign Up
 </a>
+{% endblock %}
