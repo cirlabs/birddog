@@ -2,6 +2,8 @@ import logging
 import os
 import django
 
+AUTH_PROFILE_MODULE = 'apps.users.models.UserProfile'
+
 # Base paths
 DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
 SITE_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
