@@ -29,6 +29,17 @@ class RequestDetailView(DetailView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(RequestDetailView, self).dispatch(*args, **kwargs)
+        
+class RequestDetailViewPublic(DetailView):
+    """
+    Returns a specific request using the slug as the unique identifier
+    """
+    context_object_name = 'request'
+    template_name = 'requests/request_detail.html'
+    queryset = Request.objects.all()
+
+    def dispatch(self, *args, **kwargs):
+        return super(RequestDetailViewPublic, self).dispatch(*args, **kwargs)
 
 
 @login_required
