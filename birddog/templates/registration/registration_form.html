@@ -7,10 +7,15 @@
 {% block wrapper_css %}{% endblock %}
 
 {% block content %}
-<form action="/accounts/register/" method="POST">
-    {% csrf_token %}
-    {{form}}
-    <br>
-    <input type="submit" value="submit">
-</form>
+<div class="row-fluid">
+  <div class="span6 hero-unit">
+  	<h2>Sign Up</h2>
+	<form action="/accounts/register/" method="POST">
+	    {% csrf_token %}
+	    {{form}}
+	    <br>
+	    <input class='btn' type="submit" value="Sign Up">
+	</form>
+</div>
+</div>
 {% endblock %}
