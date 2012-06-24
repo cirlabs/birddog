@@ -4,11 +4,14 @@ from django.template.defaultfilters import slugify
 
 
 def user_created(sender, user, request, **kwargs):
-    form = UserRegistrationForm(request.POST)
-    name = form.data['organization']
-    org_slug = slugify(name)
-    user_org, created = Organization.objects.get_or_create(name=name, slug=org_slug)
-    userprofile, created = UserProfile.objects.get_or_create(user=user, organization=user_org)
+    try:
+        form = UserRegistrationForm(request.POST)
+        name = form.data['organization']
+        org_slug = slugify(name)
+        user_org, created = Organization.objects.get_or_create(name=name, slug=org_slug)
+        userprofile, created = UserProfile.objects.get_or_create(user=user, organization=user_org)
+    except Exception as e:
+        print e
 
 from registration.signals import user_registered
 user_registered.connect(user_created)
