@@ -12,19 +12,18 @@ class RequestForm(forms.ModelForm):
 class NewRequestForm(forms.ModelForm):
     class Meta:
         model = Request
-        fields = ('title', 'agency', 'private')
+        fields = ('title', 'agencies', 'private')
         widgets = {
                 'private': forms.widgets.CheckboxInput
             }
 
-    agency = forms.ModelChoiceField(
+    agencies = forms.ModelMultipleChoiceField(
                 queryset=Agency.objects.all(),
                 widget=forms.widgets.SelectMultiple,
-                empty_label=None
             )
 
 
 class NewOptionalRequestForm(forms.ModelForm):
     class Meta:
         model = Request
-        fields = ('text', 'tags', 'document')
+        fields = ('text', 'tags', 'documents')

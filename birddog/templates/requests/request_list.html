@@ -49,12 +49,18 @@
 			<td><input type="checkbox"/></td>
 			<td>{{ object.date_added.date }}</td>
 			<td><a href="{% url 'request_detail' slug=object.slug %}">{{ object.title }}</a></td>
-			<td><a href="{% url 'agency_detail' slug=object.agency.slug %}">{{ object.agency }}</a></td>
+			<td>
+				{% for agency in object.agencies.all %}
+					<a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency }}</a>
+				{% endfor %}
+			</td>
 			<td></td>
 			<td>{{ object.get_status_display }}</td>
 			<td>Private</td>
 		</tr>{% endfor %}
 	</table>
 </section>
+	<!-- url request_new not found, wtf? -->
+	<a href="/requests/new/">Create New Request</a>
 
 {% endblock %}
