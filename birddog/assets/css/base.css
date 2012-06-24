@@ -4,7 +4,6 @@
 }
 
 #new-request input[type="submit"] {
-	float : right ;
 	display : inline-block ;
 	zoom : 1
 	display : *inline ;
