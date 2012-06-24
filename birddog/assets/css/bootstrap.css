@@ -4970,6 +4970,7 @@ a.badge:hover {
   line-height: 1;
   letter-spacing: -1px;
   color: inherit;
+  text-align: center;
 }
 
 .hero-unit h1 > span {
