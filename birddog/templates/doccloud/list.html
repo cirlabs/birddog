@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>Title</td>
+            <td>Created</td>
+            <td>Access Level</td>
+        </tr>
+        {% for object in objects %}
+        <tr>
+            <!--TODO: restrict access to documents based on user -->
+            <td><a href="{% url 'docs_detail' slug=object.slug %}">{{object.title}}</a></td>
+            <td>{{object.created_at}}</td>
+            <td>{{object.access_level}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

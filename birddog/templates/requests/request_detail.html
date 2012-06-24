@@ -1,8 +1,20 @@
 {% extends "base.html" %}
+{% load url from future %}
 
 {% block content %}
-
-{{ object.agency.name }}<br />
-{{ object.title }}
-
+<table>
+    <tr>
+        <td>Title</td>
+        <td>Agencies</td>
+        <td><a href="{% url docs_index %}">Add Document</a></td>
+    </tr>
+    <tr>
+        <td>{{ object.title }}</td>
+        <td>
+        {% for agency in object.agencies.all %}
+            <a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency.name }}</a><br/>
+        {% endfor %}
+        </td>
+    </tr>
+</table>
 {% endblock %}
