@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block title %}Bird Dog: New request{% endblock %}
+	
+{% block wrapper_meta %}{% endblock %}
+
+{% block wrapper_css %}{% endblock %}
+
+{% block content %}
+
+<style>
+	#my-requests th,
+	#my-requests td {
+		padding : 7px ;
+		border-bottom : 1px solid #CCC ;
+	}
+	
+	#bulk-actions h3 {
+		display : inline-block ;
+	}
+</style>
+
+<section id="my-requests">
+	<h1>My requests</h1>
+	
+	<div id="bulk-actions">
+		<h3>Bulk actions</h3>
+		<select>
+			<option value="">Make public</option>
+			<option value="">Make private</option>
+			<option value="">Delete</option>
+			<option value="">Share with user</option>
+			<option value="">Set reminder</option>
+		</select>
+	</div>
+	
+	<table cellspacing="0" cellpadding="0" border="0">
+		<tr>
+			<th><input type="checkbox"/></th>
+			<th>Request date</th>
+			<th>Title</th>
+			<th>Agency</th>
+			<th>Tags</th>
+			<th>Status</th>
+			<th>Privacy</th>
+		</tr>
+		{% for object in object_list %}<tr>
+			<td><input type="checkbox"/></td>
+			<td>{{ object.date_added.date }}</td>
+			<td><a href="{% url 'request_detail_public' slug=object.slug %}">{{ object.title }}</a></td>
+			<td>
+				{% for agency in object.agencies.all %}
+					<a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency }}</a>
+				{% endfor %}
+			</td>
+			<td></td>
+			<td>{{ object.get_status_display }}</td>
+			<td>Private</td>
+		</tr>{% endfor %}
+	</table>
+</section>
+	<!-- url request_new not found, wtf? -->
+	<a href="/requests/new/">Create New Request</a>
+
+{% endblock %}
