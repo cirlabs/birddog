@@ -72,3 +72,11 @@ def new_request(request):
     ctx = dict(reqform=reqform, optform=optform)
     template_name = "requests/new.html"
     return render(request, template_name, ctx)
+    
+def request_add_support(request, slug, user_id):
+    asfasdf = 1
+    
+    return render_to_response('addsupport.json', {
+        "success": True,
+        },
+        context_instance=RequestContext(request))

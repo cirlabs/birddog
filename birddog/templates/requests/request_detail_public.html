@@ -2,9 +2,24 @@
 {% load url from future %}
 
 {% block content %}
+
+<script>
+	function addSupport() {
+		$.getJSON('{% url 'request_add_support' slug=request.slug user_id=user.id %}', function(response) {
+			alert(response);
+		});
+	}
+</script>
 <section id="my-requests">
 	
 	<h1>{{ request.title }}</h1>
+	<p>
+		{% if user.is_authenticated %}<a class="btn js-btn btn-primary" href="Javascript:addSupport();">SUPPORT THIS REQUEST</a>
+		Increase the pressure by adding your organization as a public supporter of this request.{% else %}
+		<a class="btn js-btn btn-primary" href="Javascript:alert('Log in to add your organization as a public supporter of this request.');">SUPPORT THIS REQUEST</a>
+		Log in to add your organization as a public supporter of this request.
+		{% endif %}
+	</p>
 	<h3>Requested by {{ request.author.username }} ({{ request.author.userprofile_set.all.0.organization }})</h3>
 	<div>Requested {{ request.date_added.date }}</div>
 	<div>Requested from:
@@ -23,7 +38,10 @@
 		<li>{{ event.date }}: {{ event.description }}</li>
 	{% endfor %}</ul>
 	
-	<blink><strong>Check out all these related documents!</strong></blink>
+	<h4>Documents related to this request</h4>
+	{% for document in object.documents.all %}
+        <a href="{% url 'docs_detail' slug=document.slug %}">{{document.title}}</a><br/>
+    {% endfor %}
 	
 	
 </section>
