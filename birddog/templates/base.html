@@ -61,7 +61,7 @@
           <a class="brand" href="#"><img src="{{ STATIC_URL }}img/logo-navHeader.png" /></a>
           <div class="btn-group pull-right">
             {% if user.is_authenticated %}
-            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">
               <i class="icon-user"></i> {{user.username}}
               <span class="caret"></span>
             </a>
