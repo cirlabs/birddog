@@ -33,8 +33,12 @@
 
 {% block page_scripts %}
 	<script>
-		$(function(){
-			$("input#id_tags").autoSuggest("{% url 'taggit_autosuggest-list' %}", {minChars: 1, matchCase: true});
-		});
+		$("input#id_tags").autoSuggest(
+				"{% url 'taggit_autosuggest-list' %}",
+				{minChars: 1,
+				 neverSubmit: true,
+				 startText: "",
+				 emptyText: "No Matching Tags"}
+			);
 	</script>
 {% endblock %}
