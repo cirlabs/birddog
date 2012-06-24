@@ -4985,6 +4985,7 @@ a.badge:hover {
 
 .hero-unit h2 {
     color: #5d92b7;
+    line-height: 1.2em;
 }
 
 .hero-unit p {
