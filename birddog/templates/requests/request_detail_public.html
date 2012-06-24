@@ -6,10 +6,25 @@
 	
 	<h1>{{ request.title }}</h1>
 	<h3>Requested by {{ request.author.username }} ({{ request.author.userprofile_set.all.0.organization }})</h3>
-	Requested from:
-	<ul>{% for a in request.agencies.all %}
-		<li><a href="{% url 'agency_detail' slug=a.slug %}">{{ a.name }}</a></li>
+	<div>Requested {{ request.date_added.date }}</div>
+	<div>Requested from:
+		<ul>{% for a in request.agencies.all %}
+			<li><a href="{% url 'agency_detail' slug=a.slug %}">{{ a.name }}</a></li>
+		{% endfor %}</ul>
+	</div>
+	<div>Status:
+		{% ifequal request.status 'P' %}<span class="label">{{ request.get_status_display }}</span>{% endifequal %}
+		{% ifequal request.status 'F' %}<span class="label label-success">{{ request.get_status_display }}</span>{% endifequal %}
+	</div>
+	<p class="request-text">{{ request.text }}</p>
+	
+	<h4>Latest updates on this request</h4>
+	<ul>{% for event in request.events_set.all %}
+		<li>{{ event.date }}: {{ event.description }}</li>
 	{% endfor %}</ul>
+	
+	<blink><strong>Check out all these related documents!</strong></blink>
+	
 	
 </section>
 
