@@ -2,7 +2,10 @@
 
 {% block content %}
 
-{{ object.agency.name }}<br />
-{{ object.title }}
+<h1>{{ object.title }}</h1>
+
+<h3>To: {{ object.agency.name }}</h3>
+<h3>From: {{ object.author}}{% if object.author.organization %}, {{ object.author.organization }}{% endif %}</h3>
+<p>{{ request.text }}
 
 {% endblock %}
