@@ -32,6 +32,16 @@
 <section id="my-requests">
 	
 	<h1>{{ request.title }}</h1>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=241479755968849";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+	
+	<div class="fb-like" data-send="false" data-width="450" data-show-faces="false"></div>
 	<p>
 		{% if user.is_authenticated %}<a class="btn js-btn btn-primary" href="Javascript:addSupport();">SUPPORT THIS REQUEST</a>
 		Increase the pressure by adding your organization as a public supporter of this request.{% else %}
@@ -65,18 +75,6 @@
 	{% for document in object.documents.all %}
         <a href="{% url 'docs_detail' slug=document.slug %}">{{document.title}}</a><br/>
     {% endfor %}
-	
-
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=241479755968849";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
-<div class="fb-like" data-send="false" data-width="450" data-show-faces="false"></div>
 
 </section>
 
