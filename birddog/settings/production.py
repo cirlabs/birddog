@@ -12,7 +12,7 @@ DATABASES = {
         'PORT': '6432', # PgBouncer port
         'HOST': 'data.apps.cironline.org',
         'USER': 'birddog',
-        'PASSWORD': '9vbGMPu40m'
+        'PASSWORD': 'birddog'
     }
 }
 

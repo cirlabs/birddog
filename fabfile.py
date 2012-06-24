@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.realpath(__file__))
 Base configuration
 """
 env.project_name = 'birddog'
-env.database_password = '9vbGMPu40m'
+env.database_password = 'birddog'
 env.site_media_prefix = "site_media"
 env.admin_media_prefix = "admin_media"
 env.dbserver_path = '/home/projects' % env
@@ -163,7 +163,7 @@ def gzip_assets():
     GZips every file in the assets directory and places the new file
     in the gzip directory with the same filename.
     """
-    local('cd %s; python ./bin/gzip_assets.py' % BASE_DIR)
+    local('cd %s; python ./gzip_assets.py' % BASE_DIR)
 
 def deploy_to_s3():
     """

@@ -4,23 +4,23 @@
 {% block content %}
 
 <style>
-	#my-requests th,
-	#my-requests td {
-		padding : 7px ;
-		border-bottom : 1px solid #CCC ;
-		text-align: left;
-	}
-	
-	th {
-  	font-size: 1.2em;
-  	text-align: left;
-	}
-	
+    #my-requests th,
+    #my-requests td {
+        padding : 7px ;
+        border-bottom : 1px solid #CCC ;
+        text-align: left;
+    }
+
+    th {
+    font-size: 1.2em;
+    text-align: left;
+    }
+
 </style>
 
 <div class="body-content">
 <a style="float: right;" class="btn btn-primary btn-large" href="{% url 'docs_request_create' requestslug=object.slug %}">Add Document</a>
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
         <th>Title</th>

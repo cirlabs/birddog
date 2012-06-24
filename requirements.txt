@@ -21,3 +21,5 @@ ssh==1.7.13
 wsgiref==0.1.2
 django-registration
 PIL
+django-pylibmc-sasl==0.2.4
+pylibmc==1.2.2
