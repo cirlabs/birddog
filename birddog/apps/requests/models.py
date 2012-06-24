@@ -25,6 +25,16 @@ class Request(models.Model):
     def __unicode__(self):
         return self.title
     
+    def time_outstanding(self):
+        from datetime import datetime
+        date_filed = self.date_added
+        if self.date_fulfilled:
+            final_date = self.date_fulfilled
+        else:
+            final_date = datetime.now()
+        date_diff = final_date - date_filed
+        return date_diff.days
+    
     def original_deadline(self):
         e = self.event_set.filter(type=2).order_by('date')[0]
         return e.date
