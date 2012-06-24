@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block content %}
+<section id="my-requests">
+	
+	<h1>{{ request.title }}</h1>
+	<h3>Requested by {{ request.author.username }} ({{ request.author.userprofile_set.all.0.organization }})</h3>
+	Requested from:
+	<ul>{% for a in request.agencies.all %}
+		<li><a href="{% url 'agency_detail' slug=a.slug %}">{{ a.name }}</a></li>
+	{% endfor %}</ul>
+	
+</section>
+
+{% endblock %}
