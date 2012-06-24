@@ -16,6 +16,7 @@ class Request(models.Model):
     slug = models.SlugField(max_length=30)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    date_fulfilled = models.DateTimeField(null=True)
     # Managers
     tags = TaggableManager()
     
