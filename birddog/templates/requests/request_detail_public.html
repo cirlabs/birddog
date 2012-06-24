@@ -13,9 +13,36 @@
 {% endblock %}
 
 {% block content %}
+
+<script>
+	function addSupport() {
+		$.getJSON('{% url 'request_add_support' slug=request.slug user_id=user.id %}', function(data) {
+			if (data.success = 'False') {
+				alert(data.message);
+			} else {
+				var strSupporters = '';
+				$.each(data.supporters, function(numKey, objItem) {
+					strSupporters += '<li><a href="' + objItem.link + '">' + objItem.username + '</a></li>'
+				});
+				$('#supporters').html(strSupporters);
+			}
+		});
+	}
+</script>
 <section id="my-requests">
 	
 	<h1>{{ request.title }}</h1>
+	<p>
+		{% if user.is_authenticated %}<a class="btn js-btn btn-primary" href="Javascript:addSupport();">SUPPORT THIS REQUEST</a>
+		Increase the pressure by adding your organization as a public supporter of this request.{% else %}
+		<a class="btn js-btn btn-primary" href="Javascript:alert('Log in to add your organization as a public supporter of this request.');">SUPPORT THIS REQUEST</a>
+		Log in to add your organization as a public supporter of this request.
+		{% endif %}
+	</p>
+	<h4>Supporters:</h4>
+	<ul id="supporters">{% for s in request.supporters.all %}
+		<li><a href="{{ s.get_absolute_url }}}">{{ s.username }}</a></li>
+	{% endfor %}</ul>
 	<h3>Requested by {{ request.author.username }} ({{ request.author.userprofile_set.all.0.organization }})</h3>
 	<div>Requested {{ request.date_added.date }}</div>
 	<div>Requested from:
@@ -34,7 +61,11 @@
 		<li>{{ event.date }}: {{ event.description }}</li>
 	{% endfor %}</ul>
 	
-	<blink><strong>Check out all these related documents!</strong></blink>
+	<h4>Documents related to this request</h4>
+	{% for document in object.documents.all %}
+        <a href="{% url 'docs_detail' slug=document.slug %}">{{document.title}}</a><br/>
+    {% endfor %}
+	
 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {

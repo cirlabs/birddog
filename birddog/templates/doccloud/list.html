@@ -2,13 +2,31 @@
 {% load url from future %}
 
 {% block content %}
-    <a href="{% url 'docs_create'%}">Create New Document</a>
-    <a href="{% url 'request_list'%}">View Requests<a>
+
+<style>
+	#my-requests th,
+	#my-requests td {
+		padding : 7px ;
+		border-bottom : 1px solid #CCC ;
+		text-align: left;
+	}
+	
+	th {
+  	font-size: 1.2em;
+  	text-align: left;
+	}
+	
+</style>
+
+  <div class="body-content">
+    <a class="btn btn-primary btn-large" href="{% url 'docs_create'%}">Create New Document</a>
+    <a class="btn btn-large" href="{% url 'request_list'%}">View Requests</a>
+    <hr>
     <table>
         <tr>
-            <td>Title</td>
-            <td>Created</td>
-            <td>Access Level</td>
+            <th>Title</th>
+            <th>Created</th>
+            <th>Access Level</th>
         </tr>
         {% for object in objects %}
         <tr>
@@ -19,4 +37,5 @@
         </tr>
         {% endfor %}
     </table>
+    </div>
 {% endblock %}
