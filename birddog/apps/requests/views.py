@@ -17,6 +17,14 @@ class RequestListView(ListView):
     template_name = 'requests/request_list.html'
     queryset = Request.objects.all()
 
+class RequestListViewPublic(ListView):
+    """
+    Main view showing the list of top donors. Used as an index page.
+    """
+    context_object_name = 'request_list'
+    template_name = 'requests/request_list_public.html'
+    queryset = Request.objects.all()
+    
 
 class RequestDetailView(DetailView):
     """
@@ -29,6 +37,17 @@ class RequestDetailView(DetailView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(RequestDetailView, self).dispatch(*args, **kwargs)
+        
+class RequestDetailViewPublic(DetailView):
+    """
+    Returns a specific request using the slug as the unique identifier
+    """
+    context_object_name = 'request'
+    template_name = 'requests/request_detail_public.html'
+    queryset = Request.objects.all()
+
+    def dispatch(self, *args, **kwargs):
+        return super(RequestDetailViewPublic, self).dispatch(*args, **kwargs)
 
 
 @login_required
@@ -37,13 +56,16 @@ def new_request(request):
     optform = NewOptionalRequestForm(request.POST or None, label_suffix='')
 
     if request.method == 'POST' and reqform.is_valid() and optform.is_valid():
+
         new_request = reqform.save(commit=False)
         new_request.author = request.user
         new_request.status = 'P'
 
+
         # Combine both forms and save
         optform = NewOptionalRequestForm(data=request.POST, instance=new_request)
         optform.save()
+        reqform.save_m2m()
 
         return redirect('request_list')
 
