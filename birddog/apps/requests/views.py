@@ -1,9 +1,11 @@
 # Create your views here.
 from django.views.generic import ListView, TemplateView, DetailView
 from apps.requests.models import Agency, Event, Request
+from django.contrib.auth.models import User
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
+from django.template import RequestContext
 
 
 from .forms import NewRequestForm, NewOptionalRequestForm
@@ -74,9 +76,27 @@ def new_request(request):
     return render(request, template_name, ctx)
     
 def request_add_support(request, slug, user_id):
-    asfasdf = 1
+    message = ''
+    supporters = Request.objects.filter(slug=slug)[0].supporters.all()
     
-    return render_to_response('addsupport.json', {
-        "success": True,
+    if len(supporters) > 0:
+        success = False
+        message = "You already support this request. Thanks for your support!"
+    else:
+        print User.objects.get(id=user_id)
+        try:
+            user = User.objects.get(id=user_id)
+            Request.objects.get(slug=slug).supporters.add(user)
+            supporters = Request.objects.get(slug=slug).supporters.all()
+            success = True
+            message = 'Thanks! You are now a public supporter of this request.'
+        except:
+            success = False
+            message = 'Something went wrong (Invalid user id).'
+    
+    return render_to_response('requests/addsupport.json', {
+        "success": success,
+        "message": message,
+        "supporters": supporters,
         },
         context_instance=RequestContext(request))

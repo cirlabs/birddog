@@ -16,8 +16,16 @@
 
 <script>
 	function addSupport() {
-		$.getJSON('{% url 'request_add_support' slug=request.slug user_id=user.id %}', function(response) {
-			alert(response);
+		$.getJSON('{% url 'request_add_support' slug=request.slug user_id=user.id %}', function(data) {
+			if (data.success = 'False') {
+				alert(data.message);
+			} else {
+				var strSupporters = '';
+				$.each(data.supporters, function(numKey, objItem) {
+					strSupporters += '<li><a href="' + objItem.link + '">' + objItem.username + '</a></li>'
+				});
+				$('#supporters').html(strSupporters);
+			}
 		});
 	}
 </script>
@@ -31,6 +39,10 @@
 		Log in to add your organization as a public supporter of this request.
 		{% endif %}
 	</p>
+	<h4>Supporters:</h4>
+	<ul id="supporters">{% for s in request.supporters.all %}
+		<li><a href="{{ s.get_absolute_url }}}">{{ s.username }}</a></li>
+	{% endfor %}</ul>
 	<h3>Requested by {{ request.author.username }} ({{ request.author.userprofile_set.all.0.organization }})</h3>
 	<div>Requested {{ request.date_added.date }}</div>
 	<div>Requested from:
