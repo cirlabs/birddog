@@ -1515,6 +1515,7 @@ legend + .control-group {
 
 table {
   max-width: 100%;
+  width: 100%;
   background-color: transparent;
   border-collapse: collapse;
   border-spacing: 0;
@@ -4985,6 +4986,7 @@ a.badge:hover {
 
 .hero-unit h2 {
     color: #5d92b7;
+    line-height: 1.2em;
 }
 
 .hero-unit p {

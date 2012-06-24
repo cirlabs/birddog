@@ -2,13 +2,33 @@
 {% load url from future %}
 
 {% block content %}
+
+<style>
+	#my-requests th,
+	#my-requests td {
+		padding : 7px ;
+		border-bottom : 1px solid #CCC ;
+		text-align: left;
+	}
+	
+	th {
+  	font-size: 1.2em;
+  	text-align: left;
+	}
+	
+</style>
+
+<div class="body-content">
+<a style="float: right;" class="btn btn-primary btn-large" href="{% url 'docs_request_create' requestslug=object.slug %}">Add Document</a>
 <table>
+  <thead>
     <tr>
-        <td>Title</td>
-        <td>Agencies</td>
-        <td>Documents</td>
-        <td><a href="{% url 'docs_request_create' requestslug=object.slug %}">Add Document</a></td>
+        <th>Title</th>
+        <th>Agencies</th>
+        <th>Documents</th>
     </tr>
+  </thead>
+  <tbody>
     <tr>
         <td>{{ object.title }}</td>
         <td>
@@ -22,5 +42,7 @@
             {% endfor %}
         </td>
     </tr>
+  </tbody>
 </table>
+</div>
 {% endblock %}

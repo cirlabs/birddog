@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Bird Dog: New request{% endblock %}
+{% block title %}Bird Dog: {{agency.name}}{% endblock %}
 	
 {% block wrapper_meta %}{% endblock %}
 
@@ -12,9 +12,42 @@
 	
 </style>
 
+
+<div class="body-content">
+
 <section id="agency">
 	<h1>{{ agency.name }}</h1>
-	
+  	<hr> 
+	<h2>Agency Statistics</h2>
+	<ul>
+	<li>Late Requests: {{ agency.late_requests }}</li>
+	<li>Average Time Outstanding: {{ agency.average_time_outstanding }}</li>
+	</ul>
+
+	<h2>Requests</h2>
+<table class="table table-striped" cellspacing="0" cellpadding="0" border="0">
+  		<tr>
+  			<th>Request date</th>
+  			<th>Title</th>
+  			<th>Agency</th>
+  			<th>Tags</th>
+  			<th>Status</th>
+  			<th>Privacy</th>
+  		</tr>
+  		{% for object in agency.related_agencies.all %}<tr>
+  			<td>{{ object.date_added.date }}</td>
+  			<td>{{ object.title }}</td>
+  			<td>
+  				{% for agency in object.agencies.all %}
+  					{{ agency.name }}<br/>
+  				{% endfor %}
+  			</td>
+  			<td></td>
+  			<td>{{ object.get_status_display }}</td>
+  			<td>Private</td>
+  		</tr>{% endfor %}
+  	</table>
 </section>
+</div>
 
 {% endblock %}
