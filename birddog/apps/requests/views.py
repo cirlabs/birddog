@@ -55,16 +55,17 @@ def new_request(request):
     reqform = NewRequestForm(request.POST or None, label_suffix='')
     optform = NewOptionalRequestForm(request.POST or None, label_suffix='')
 
-    #import pdb;pdb.set_trace()
     if request.method == 'POST' and reqform.is_valid() and optform.is_valid():
 
         new_request = reqform.save(commit=False)
         new_request.author = request.user
         new_request.status = 'P'
 
+
         # Combine both forms and save
         optform = NewOptionalRequestForm(data=request.POST, instance=new_request)
         optform.save()
+        reqform.save_m2m()
 
         return redirect('request_list')
 
