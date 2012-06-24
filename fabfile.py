@@ -163,7 +163,7 @@ def gzip_assets():
     GZips every file in the assets directory and places the new file
     in the gzip directory with the same filename.
     """
-    local('cd %s; python ./bin/gzip_assets.py' % BASE_DIR)
+    local('cd %s; python ./gzip_assets.py' % BASE_DIR)
 
 def deploy_to_s3():
     """
