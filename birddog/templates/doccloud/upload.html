@@ -2,13 +2,19 @@
 {% load url from future %}
 
 {% block content %}
-    <form action="{% url 'docs_upload' %}" method="POST" enctype="multipart/form-data">
+    <a href="{% url 'docs_list' %}">Return to Docs Listing</a>
+    {% if slug == None %}
+        <form action="{% url 'docs_upload' %}" method="POST" enctype="multipart/form-data">
+    {% else %}
+        <form action="{% url 'docs_request_upload' requestslug=slug %}" method="POST" enctype="multipart/form-data">
+    {% endif %}
         {% csrf_token %}
         {{form.errors}}
         Select file: {{form.file}}
         Title: {{form.title}}<br/>
         Description: {{form.description}}<br/>
-        Access Level: {{form.access_level}}
+        Access Level: {{form.access_level}}<br/>
+        KEEP ACCESS LEVEL TO PUBLIC FOR NOW
         <input type="submit" value="submit">
     </form>
 {% endblock %}

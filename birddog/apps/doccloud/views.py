@@ -5,12 +5,15 @@ from django.template import RequestContext
 from django.shortcuts import get_object_or_404, render_to_response
 from apps.doccloud.forms import DocCloudDocForm
 from apps.doccloud.models import DocumentCloudProperties, Document
+from apps.requests.models import Request
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 @login_required
-def create(request, template_name='doccloud/upload.html'):
+def create(request, requestslug=None, template_name='doccloud/upload.html'):
     context = {}
     context['form'] = DocCloudDocForm()
+    context['slug'] = requestslug
     return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 def list(request, template_name='doccloud/list.html'):
@@ -24,7 +27,7 @@ def detail(request, slug, template_name='doccloud/detail.html'):
     return render_to_response(template_name, context, context_instance=RequestContext(request))
 
 @login_required
-def upload(request, template_name='doccloud/list.html'):
+def upload(request, requestslug=None, template_name='doccloud/list.html'):
     context = {}
     try:
         if request.method == 'POST':
@@ -35,6 +38,11 @@ def upload(request, template_name='doccloud/list.html'):
                 model.user = request.user
                 model.connect_dc_doc()
                 model.save()
+
+                if requestslug != None:
+                    req = get_object_or_404(Request, slug=requestslug)
+                    req.documents.add(model)
+                    return redirect('request_detail', slug=requestslug)
             else:
                 context['form'] = dc_form
                 return render_to_response('doccloud/upload.html', context, context_instance=RequestContext(request))
@@ -42,4 +50,5 @@ def upload(request, template_name='doccloud/list.html'):
             return render_to_response('doccloud/upload.html', context, context_instance=RequestContext(request))
     except Exception as e:
         print e#need logger
+    context['objects'] = Document.objects.all()
     return render_to_response(template_name, context, context_instance=RequestContext(request))

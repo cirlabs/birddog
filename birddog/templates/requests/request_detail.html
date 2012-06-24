@@ -6,7 +6,8 @@
     <tr>
         <td>Title</td>
         <td>Agencies</td>
-        <td><a href="{% url 'docs_create' %}">Add Document</a></td>
+        <td>Documents</td>
+        <td><a href="{% url 'docs_request_create' requestslug=object.slug %}">Add Document</a></td>
     </tr>
     <tr>
         <td>{{ object.title }}</td>
@@ -14,6 +15,11 @@
         {% for agency in object.agencies.all %}
             <a href="{% url 'agency_detail' slug=agency.slug %}">{{ agency.name }}</a><br/>
         {% endfor %}
+        </td>
+        <td>
+            {% for document in object.documents.all %}
+            <a href="{% url 'docs_detail' slug=document.slug %}">{{document.title}}</a><br/>
+            {% endfor %}
         </td>
     </tr>
 </table>
