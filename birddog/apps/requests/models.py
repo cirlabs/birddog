@@ -12,6 +12,7 @@ class Request(models.Model):
     document = models.ForeignKey(Document, blank=True, null=True)
     text = models.TextField(u'Request text', blank=True)
     private = models.BooleanField(default=False)
+    supporters = models.ManyToManyField(User, blank=True, null=True, related_name='supporter')
     slug = models.SlugField(max_length=30)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)

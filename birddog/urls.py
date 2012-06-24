@@ -15,6 +15,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Simple login for securing site on Heroku
     (r'^/$', 'apps.users.views.register_complete'),#change me
+    url(r'^docs/$', 'apps.doccloud.views.index', name='docs_index'),
+    url(r'^docs/upload/$', 'apps.doccloud.views.upload', name='docs_upload'),
     (r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'admin/login.html'}),
 
     # Admin

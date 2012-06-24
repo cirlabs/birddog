@@ -13,6 +13,32 @@ PRIVACY_LVLS = (
 ('organization', 'Organization (viewable by users in your organization)')
 )
 
+def put_file(file, user):
+    if len(form.files) > 0 and obj.updated_at == None:
+        #file, obj are new
+        obj.user = request.user
+        obj.connect_dc_doc()
+        obj.save()
+    elif len(form.files) > 0 and obj.updated_at != None:
+        #object has been updated, look for file changes
+        n_file = form.files['file']
+        n_file_sz = getsize(n_file)
+        n_file_hdr = n_file.read(512) if n_file_sz >= 512\
+         else n_file.read()
+        o_file = obj.file
+        o_file_sz = getsize(o_file)
+        o_file_hdr = o_file.read(512) if o_file_sz >= 512\
+         else o_file.read()
+
+        if o_file_hdr != n_file_hdr:
+            #looks like the file could be different (not a whole file compar)
+            obj.dc_properties.delete()
+            obj.connect_dc_doc()
+            obj.save()
+    else:
+        obj.dc_properties.update_access(obj.access_level)
+        obj.save()
+
 def get_client():
     return DocumentCloud(settings.DOCUMENTCLOUD_USERNAME,\
          settings.DOCUMENTCLOUD_PASS)
@@ -73,7 +99,7 @@ class Document(models.Model):
     upload_to path is ...
     https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.FileField.upload_to
     """
-    file = models.FileField(upload_to=settings.DOCUMENTS_PATH)
+    file = models.FileField(upload_to=settings.DOCUMENTS_PATH, max_length=255)
     slug = AutoSlugField(populate_from=('title',))
     user = models.ForeignKey(User, blank=True, null=True)
     title = models.CharField(max_length=255)

@@ -14,6 +14,7 @@ class UserProfile(models.Model):
 class Organization(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=30)
+    logo = models.ImageField(upload_to='logos', blank=True)
 
     def __unicode__(self):
         return self.name
