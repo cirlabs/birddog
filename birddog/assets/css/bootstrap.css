@@ -4947,7 +4947,7 @@ a.badge:hover {
 }
 
 .hero-unit {
-  padding: 60px;
+  padding: 30px;
   margin-bottom: 30px;
   background-color: #fffefc;
   border: 1px solid #bab5a9;
@@ -4964,6 +4964,10 @@ a.badge:hover {
   line-height: 1;
   letter-spacing: -1px;
   color: inherit;
+}
+
+.hero-unit h2 {
+    color: #5d92b7;
 }
 
 .hero-unit p {
