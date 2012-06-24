@@ -4,6 +4,8 @@ from taggit.managers import TaggableManager
 from apps.doccloud.models import Document
 from apps.agencies.models import Agency
 
+from django_extensions.db.fields import AutoSlugField
+
 
 class Request(models.Model):
     author = models.ForeignKey(User)
@@ -14,18 +16,17 @@ class Request(models.Model):
     text = models.TextField(u'Request text', blank=True)
     private = models.BooleanField(default=False)
     supporters = models.ManyToManyField(User, blank=True, null=True, related_name='supporter')
-    slug = models.SlugField(max_length=30)
+    slug = AutoSlugField(populate_from=('title', ), overwrite=True)
     date_added = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     date_fulfilled = models.DateTimeField(null=True)
+
     # Managers
-    tags = TaggableManager()
-    
-    # date_fulfiled?
-    
+    tags = TaggableManager(blank=True)
+
     def __unicode__(self):
         return self.title
-    
+
     def time_outstanding(self):
         from datetime import datetime
         date_filed = self.date_added
@@ -35,18 +36,19 @@ class Request(models.Model):
             final_date = datetime.now()
         date_diff = final_date - date_filed
         return date_diff.days
-    
+
     def original_deadline(self):
         e = self.event_set.filter(type=2).order_by('date')[0]
         return e.date
-    
+
     def latest_deadline(self):
         e = self.event_set.filter(type=2).order_by('date')[0]
         return e.date
-    
+
     @models.permalink
     def get_absolute_url(self):
         return ('request_detail', (), {'slug': self.slug})
+
 
 class Event(models.Model):
     EVENT_CHOICES = (
@@ -61,6 +63,6 @@ class Event(models.Model):
     date = models.DateField(blank=True, null=True)
     description = models.TextField(blank=True)
     # Supporting docs
-    
+
     def __unicode__(self):
         return '%s -> %s' % (self.request.title, self.name)
